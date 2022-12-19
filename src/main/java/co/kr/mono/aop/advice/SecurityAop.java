@@ -74,13 +74,13 @@ public class SecurityAop {
         displayLine();
     }
 
-    @After("execution(public * co.kr.mono.aop.entity.Person.*(..))")
+    @After("execution(public * co.kr.mono.aop.entity.Person.*(..))") // finally 처럼 오류 유무랑 상관 없이 진행
     public void logAfter(JoinPoint joinPoint) {
         String signatureStr = joinPoint.getSignature().toString();
         displayLine();
 
         System.out.println("### STEP5 : <aop:after> : 메서드가 정상적으로 실행되는지 " +
-                "또는 에외를 발생시키는지 여부에 상관없이 실행하는어드바이스를 정의");
+                "또는 예외를 발생시키는지 여부에 상관없이 실행하는어드바이스를 정의");
         System.out.println("### STEP5 : " + signatureStr + " 종료.");
         displayLine();
     }
